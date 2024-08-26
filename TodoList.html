@@ -1,196 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODO List</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-
-      #todoContainer {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        width: 300px;
-      }
-
-      h1 {
-        color: #333;
-        text-align: center;
-        margin-bottom: 20px;
-      }
-
-      form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      input[type="text"] {
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        width: 100%;
-        margin-right: 10px;
-      }
-
-      button[type="submit"] {
-        padding: 10px 15px;
-        font-size: 16px;
-        color: #fff;
-        background-color: #28a745;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      button[type="submit"]:hover {
-        background-color: #218838;
-      }
-
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin-top: 20px;
-      }
-
-      li {
-        background-color: #f9f9f9;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      button {
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      button.edit {
-        background-color: #007bff;
-        color: #fff;
-      }
-
-      button.edit:hover {
-        background-color: #0056b3;
-      }
-
-      button.save {
-        background-color: #28a745;
-        color: #fff;
-      }
-
-      button.save:hover {
-        background-color: #218838;
-      }
-
-      button.remove {
-        background-color: #dc3545;
-        color: #fff;
-      }
-
-      button.remove:hover {
-        background-color: #c82333;
-      }
-    </style>
-  </head>
-  <body>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
     <div id="todoContainer">
-      <h1>TODO List</h1>
-      <form>
-        <input type="text" id="task" name="task" placeholder="Add Task" />
-        <button type="submit" id="addBtn">Add</button>
-      </form>
+        <h1>TODO List</h1>
+        <form>
+            <input type="text" id="task" name="task" placeholder="Add Task" />
+            <button type="submit" id="addBtn">Add</button>
+        </form>
 
-      <ul id="taskList">
-        <!-- List of tasks will be added here -->
-      </ul>
+        <ul id="taskList">
+            <!-- List of tasks will be added here -->
+        </ul>
     </div>
-    <script>
-      const form = document.querySelector("form");
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-      });
-
-      const taskList = document.getElementById("taskList");
-      const addBtn = document.getElementById("addBtn");
-      const userInput = document.getElementById("task");
-      userInput.focus();
-      const heading = document.querySelector('h1');
-      heading.style.color = "#333";
-
-      // Add new task to the list when 'Add' button is clicked
-      addBtn.addEventListener("click", () => {
-        const listItem = document.createElement("li");
-
-        // Task text element
-        const taskText = document.createElement("span");
-        taskText.textContent = userInput.value;
-
-        // Remove button
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "Remove";
-        removeBtn.classList.add("remove");
-
-        // Edit button
-        const editBtn = document.createElement("button");
-        editBtn.textContent = "Edit";
-        editBtn.classList.add("edit");
-
-        // Append task text and buttons to list item
-        listItem.appendChild(taskText);
-        listItem.appendChild(editBtn);
-        listItem.appendChild(removeBtn);
-        taskList.appendChild(listItem);
-        userInput.value = "";
-
-        // Remove task when "Remove" button is clicked
-        removeBtn.addEventListener("click", () => {
-          taskList.removeChild(listItem);
-        });
-
-        // Edit task when "Edit" button is clicked
-        editBtn.addEventListener("click", () => {
-          const editInput = document.createElement("input");
-          editInput.type = "text";
-          editInput.value = taskText.textContent;
-          listItem.insertBefore(editInput, taskText);
-          listItem.removeChild(taskText);
-
-          // Change "Edit" button to "Save"
-          editBtn.textContent = "Save";
-          editBtn.classList.remove("edit");
-          editBtn.classList.add("save");
-
-          editBtn.addEventListener("click", () => {
-            taskText.textContent = editInput.value;
-            listItem.insertBefore(taskText, editInput);
-            listItem.removeChild(editInput);
-            editBtn.textContent = "Edit";
-            editBtn.classList.remove("save");
-            editBtn.classList.add("edit");
-          });
-        });
-      });
-    </script>
-  </body>
+    <script src="script.js"></script>
+</body>
 </html>
