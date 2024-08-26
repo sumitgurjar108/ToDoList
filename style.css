@@ -27,6 +27,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 input[type="text"] {
@@ -76,24 +77,16 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-left: 5px;
 }
 
-button.edit {
+button.edit, button.save {
     background-color: #007bff;
     color: #fff;
 }
 
-button.edit:hover {
+button.edit:hover, button.save:hover {
     background-color: #0056b3;
-}
-
-button.save {
-    background-color: #28a745;
-    color: #fff;
-}
-
-button.save:hover {
-    background-color: #218838;
 }
 
 button.remove {
@@ -104,3 +97,26 @@ button.remove {
 button.remove:hover {
     background-color: #c82333;
 }
+
+button.up, button.down {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+button.up:hover, button.down:hover {
+    background-color: #e0a800;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+input[type="text"][placeholder="Search tasks..."] {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
